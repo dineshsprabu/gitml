@@ -288,6 +288,8 @@ class Workspace(object):
 		self.ignores = ignore
 		self.stash_path = _path_join(path, Project.VML_DIR_NAME, 
 			".stash")
+		# Creates stash path if not available already.
+		create_dir_if_not_exist(self.stash_path);
 
 
 	def list(self):
@@ -305,7 +307,6 @@ class Workspace(object):
 		_list = self.list()
 
 		for l in _list:
-
 			move(_path_join(self.path, l), 
 				_path_join(self.stash_path, l))
 
