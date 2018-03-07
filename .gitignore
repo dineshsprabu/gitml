@@ -1,0 +1,12 @@
+.cache
+.coverage
+*.egg-info
+build
+dist
+
+**/.DS_Store
+.DS_Store
+
+**/__pycache__
+**/*.pyc
+todo
