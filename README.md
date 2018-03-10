@@ -1,4 +1,4 @@
-# VersionML - Git for Data Scientists
+# VersionML - Git for Data Science Projects
 
 VersionML helps you manage and move around between iterations during model building.
 
