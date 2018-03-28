@@ -2,18 +2,18 @@ import git
 import os
 from codecs import open
 
-from .exceptions import VersionMLException
+from .exceptions import GitMLException
 from .util import log_message, touch
 
-class InvalidGitRepositoryError(VersionMLException):
+class InvalidGitRepositoryError(GitMLException):
     pass
 
 
-class FileNotInRepoError(VersionMLException):
+class FileNotInRepoError(GitMLException):
     pass
 
 
-class SCMError(VersionMLException):
+class SCMError(GitMLException):
     pass
 
 
@@ -73,8 +73,8 @@ class Git(object):
             # Creates a branch on the new repo.
             _git.checkout("master")
         _git.add_ignores(initial_ignores)
-        _git.commit_all("VersionMl Project initialised. Visit "+ \
-            "https://versionml.com.")
+        _git.commit_all("GitML Project initialised. Visit "+ \
+            "https://gitml.com.")
         return _git
 
 
@@ -207,7 +207,7 @@ class Git(object):
 
         if os.path.exists(self.ignore_file):
             # Building entries.
-            ignore_string = "# Added by VersionML\n"
+            ignore_string = "# Added by GitML\n"
             for entry in entries:
                 ignore_string = (ignore_string 
                     + "%s\n" % entry.strip(" "))

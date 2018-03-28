@@ -2,4 +2,4 @@
 
 python setup.py develop --uninstall
 rm -rf *.egg*
-rm ./versionml/*.pyc
+rm ./gitml/*.pyc

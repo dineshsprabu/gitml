@@ -9,13 +9,13 @@ with open(path.join(here, "README.md"), encoding="utf-8") as f:
     long_description = f.read()
 
 setup(
-    name="versionml",
+    name="gitml",
     version="1.0.0",
     description="Version control system for your machine learning projects.",
     long_description=long_description,
-    url="https://versionml.com",
-    author="Team VersionML",
-    author_email="author@versionml.com",
+    url="https://gitml.com",
+    author="Team GitML",
+    author_email="author@gitml.com",
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Intended Audience :: Developers",
@@ -33,7 +33,7 @@ setup(
     install_requires=["tinydb", "docopt", "gitpython", "uuid", "terminaltables"],
     entry_points={
         "console_scripts": [
-            "versionml=versionml.cli:main",
+            "gitml=gitml.cli:main",
         ],
     }
 )

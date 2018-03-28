@@ -17,9 +17,9 @@ from .util import *
 
 class Project(object):
 
-	VML_FILE_NAME = "versionml.json"
+	VML_FILE_NAME = "gitml.json"
 
-	VML_DIR_NAME = ".versionml"
+	VML_DIR_NAME = ".gitml"
 
 	CONFIRM_QUESTIONS = ["git"]
 
@@ -36,9 +36,9 @@ class Project(object):
 	}
 
 	GIT_IGNORES = [
-		".versionml/.data/*",
-		"!.versionml/.data/commits.json",
-		".versionml/.iterations"
+		".gitml/.data/*",
+		"!.gitml/.data/commits.json",
+		".gitml/.iterations"
 	]
 
 	def __init__(self, base_path=None):
@@ -73,7 +73,7 @@ class Project(object):
 
 	def _create_dir(self):
 		dir_path = create_dir_if_not_exist(self._dir_path, 0755)
-		# .keep folder for initial commit of .versionml dir.
+		# .keep folder for initial commit of .gitml dir.
 		# touch(_path_join(dir_path, ".keep"))
 		return dir_path
 
@@ -144,7 +144,7 @@ class Project(object):
 
 	def delete(self):
 		_closest = self.closest()
-		question = "Deleting versionml on project:"+ \
+		question = "Deleting gitml on project:"+ \
 			" %s. Are you sure?" % _closest
 		if not confirm(question): exit()
 		Project(_closest).remove()
@@ -153,7 +153,7 @@ class Project(object):
 	def initialize(self):
 		if self.exists(): self.replace()
 		else: self.create()
-		exit_with_message("Project initiated with VersionML. Visit "+ \
-			"http://versionml.com for more info.")
+		exit_with_message("Project initiated with GitML. Visit "+ \
+			"http://gitml.com for more info.")
 		return self._base_path
 

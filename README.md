@@ -1,10 +1,10 @@
-# VersionML - Git for Data Science Projects
+# GitML - Git for Data Science Projects
 
-VersionML helps you manage and move around between iterations during model building.
+GitML helps you manage and move around between iterations during model building.
 
 
 
-## How versionml can help you?
+## How gitml can help you?
 
 We provide a git like command line tool for you to take a snapshot of your current state with all necessary information and dependent files.
 
@@ -15,35 +15,35 @@ We provide a git like command line tool for you to take a snapshot of your curre
 ### Installation
 	
 ```
-pip install versionml
+pip install gitml
 ```
 
 
 ## Usage
 
-## Initializing a versionml project. 
+## Initializing a gitml project. 
 
 It will also initialize a new git repository, if one doesn't exist already.
 
 ```
-versionml init
+gitml init
 ```
 
-## Building your model with versionml
+## Building your model with gitml
 
-Continue with your model building. Say you are starting with `model.py`. Add versionml package to your code, like below.
+Continue with your model building. Say you are starting with `model.py`. Add gitml package to your code, like below.
 
 ```python
 
 # model.py
 
-import versionml
+import gitml
 
 ## your code goes here ##
 
 ## Add the below lines.
 
-with versionml.state() as state:
+with gitml.state() as state:
 	state.set( model=MODEL_OBJECT, params = { "PARAM_KEY_1" : "PARAM_VALUE_1" }, metrics = { "METRICS_KEY_1" : "METRICS_KEY_2" }, 
 	remarks = "REMARKS" )
 
@@ -63,59 +63,59 @@ This takes a snapshot of all your files and along with other information. It wil
 ```
 # You will be seeing this line when you run `python model.py save`.
 
-[VersionML] iteration id : <ITERATION_ID>
+[GitML] iteration id : <ITERATION_ID>
 ```
 
 ### List all saved iterations.
 
 ```
-versionml ls
+gitml ls
 ```
 
 ### Choose and commit a saved iteration.
 
-This will add a permenant commit to your git. For the iteration id, try `versionml ls`.
+This will add a permenant commit to your git. For the iteration id, try `gitml ls`.
 
 ```
-versionml commit <ITERATION_ID>
+gitml commit <ITERATION_ID>
 ```
 
 ### List all commited iterations.
 
 ```
-versionml commit ls
+gitml commit ls
 ```
 
 ### Reusing a commited iteration. 
 
 ```
-versionml reuse <COMMITED_ITERATION_ID>
+gitml reuse <COMMITED_ITERATION_ID>
 ```
 
-Note : `COMMITED_ITERATION_ID` is the iteration id from `versionml commit ls`.
+Note : `COMMITED_ITERATION_ID` is the iteration id from `gitml commit ls`.
 
 
 ### Stash the changes on your current workspace.
 
 ```
-versionml stash
+gitml stash
 ```
 
 ### Restore the stash.
 
 ```
-versionml restore
+gitml restore
 ```
 
 ### Loading a saved/commited iteration on your code for serving.
 
 ```python
 
-import versionml
+import gitml
 
-## For saved iterations `versionml ls` and commited iterations `versionml commit ls`.
+## For saved iterations `gitml ls` and commited iterations `gitml commit ls`.
 
-model = versionml.load("<ITERATION_ID>")
+model = gitml.load("<ITERATION_ID>")
 
 ## Your code.
 

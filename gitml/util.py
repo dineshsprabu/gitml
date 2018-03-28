@@ -9,7 +9,7 @@ from re import compile as _re_compile
 
 
 def log_message(message, tag=False):
-	if tag: message = "[VersionML] %s" % message
+	if tag: message = "[GitML] %s" % message
 	print("\n%s\n" % message)
 
 
@@ -80,7 +80,7 @@ def log_dicts_as_tables(tdicts, title, headers=None):
 def show_banner():
 	print("\n")
 	print("############################################")
-	print("############ VersionML (v0.1) ##############")
+	print("############ GitML (v0.1) ##############")
 	print("############################################")
 	print("\n")
 	return

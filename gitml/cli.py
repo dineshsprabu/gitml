@@ -1,30 +1,30 @@
-"""VersionML (v0.1) - Git for Data Scientists.\n
+"""GitML (v0.1) - Git for Data Scientists.\n
   Usage:
-	versionml
-	versionml -h | --help
-	versionml -v | --version
-	versionml init
-	versionml ls | list
-	versionml show <ITERATION-ID>
-	versionml commit <ITERATION-ID>
-	versionml commit ls | commit list
-	versionml commit show <ITERATION-ID>
-	versionml delete
-	versionml stash
-	versionml restore
-	versionml reuse <ITERATION-ID>
+	gitml
+	gitml -h | --help
+	gitml -v | --version
+	gitml init
+	gitml ls | list
+	gitml show <ITERATION-ID>
+	gitml commit <ITERATION-ID>
+	gitml commit ls | commit list
+	gitml commit show <ITERATION-ID>
+	gitml delete
+	gitml stash
+	gitml restore
+	gitml reuse <ITERATION-ID>
 
 
   Options:
 	-h | --help		Shows the usage details.
-	-v | --version		Shows the version of your versionml installation.
-	init			Initializes a versionml project on your current directory.
+	-v | --version		Shows the version of your gitml installation.
+	init			Initializes a gitml project on your current directory.
 	ls | list		Lists all iterations.
 	show			Shows the details of the iteration for the ITERATION_ID passed.
 	commit			Commits the iteration available by ITERATION_ID
 	commit ls | list	Lists all commited iterations.
 	commit show 	Shows the selected commit by ITERATION_ID.
-	delete			Deletes the versionml project.
+	delete			Deletes the gitml project.
 """
 
 
@@ -76,7 +76,7 @@ def _get_user_selected(req):
 def _check_mandatory_opt(req, opt):
 	if opt not in req or not req[opt]:
 		exit_with_message("Option %s is missing. Try" % opt + \
-			" versionml -h for help.")
+			" gitml -h for help.")
 
 
 def _opt_to_arg(opt):
@@ -87,7 +87,7 @@ def _opt_to_arg(opt):
 
 
 def _print_version():
-	exit_with_message("VersionML %s" % VERSION)
+	exit_with_message("GitML %s" % VERSION)
 
 
 def _parse_if_json(jstring):
@@ -139,7 +139,7 @@ def dispatch(req):
 
 	elif user_selected[0] == "reuse":
 		if not req["<ITERATION-ID>"]:
-			exit_with_message("Please provide an iteration id. For help 'versionml -h'. ")
+			exit_with_message("Please provide an iteration id. For help 'gitml -h'. ")
 		_iteration.reuse(req["<ITERATION-ID>"])
 
 	elif (user_selected[0] == "-v" 

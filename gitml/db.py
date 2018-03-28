@@ -11,7 +11,7 @@ class DataModel(object):
 		"commit"
 	]
 
-	DATA_DIR = _path_join(".versionml", ".data")
+	DATA_DIR = _path_join(".gitml", ".data")
 
 	@classmethod
 	def setup(cls, project_path):

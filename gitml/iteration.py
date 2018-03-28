@@ -4,7 +4,7 @@
 
 Code: model.py
 
-from versionml import state
+from gitml import state
 
 with state() as _state:
 	_state.set(model=<MODEL-OBJECT>, params=<PARAMETERS>,
@@ -27,18 +27,18 @@ from os import remove, listdir
 from distutils.dir_util import copy_tree as _dir_copy_contents
 
 
-from .exceptions import VersionMLException
+from .exceptions import GitMLException
 from .project import Project
 from .db import DataModel
 from .scm import Git
 from .util import *
 
 
-class InvalidIterationException(VersionMLException):
+class InvalidIterationException(GitMLException):
 	pass
 
 
-class ProjectNotFoundException(VersionMLException):
+class ProjectNotFoundException(GitMLException):
 	pass
 
 class Iteration(object):
@@ -52,8 +52,8 @@ class Iteration(object):
 	DISPLAY_COLS = ["id", "params", "metrics", "remarks"]
 
 	CODE_ARCHIVE_IGNORE = [
-		".git", ".versionml", 
-		".gitignore", "versionml.json"
+		".git", ".gitml", 
+		".gitignore", "gitml.json"
 	]
 
 
@@ -65,7 +65,7 @@ class Iteration(object):
 
 		# If no Project found on scan. 
 		if not project_path: exit_with_message(
-			"No versionml project found. Use 'versionml init' " + \
+			"No gitml project found. Use 'gitml init' " + \
 			"command to create one.", tag=True)
 
 		self.project_path = project_path
@@ -179,7 +179,7 @@ class Iteration(object):
 
 		if not model:
 			log_message("No model given for saving. Try command"+ \
-				" 'versionml save -h'.")
+				" 'gitml save -h'.")
 
 		if not _path_exists(model_path):
 			# Saving the model object as pickle file.
@@ -237,7 +237,7 @@ class Iteration(object):
 
 		if not self.workspace.is_empty():
 			exit_with_message("Workspace is not empty. Please stash your " + \
-				"changes using 'versionml stash'")
+				"changes using 'gitml stash'")
 
 		# Copies code contents to workspace.
 		_dir_copy_contents(code_path, self.project_path)
@@ -269,11 +269,11 @@ class Iteration(object):
 		unique_id = unique_id.strip()
 
 		if not unique_id:
-			raise ValueError("[VersionML] Invalid id.")
+			raise ValueError("[GitML] Invalid id.")
 
 		model_path = self._model_path(unique_id)
 		if not _path_exists(model_path):
-			error_msg = "[VersionML] Failed loading model." + \
+			error_msg = "[GitML] Failed loading model." + \
 				" Invalid iteration id %s." % str(unique_id) 
 			raise ValueError(error_msg)
 
@@ -368,7 +368,7 @@ class Action(object):
 
 		name = name.strip()
 		if name not in self.SUPPORT:
-			raise Exception("Unsupported versionml action.")
+			raise Exception("Unsupported gitml action.")
 		self.name = name
 		# Creates an instance of empty state.
 		self.state = State()
