@@ -3,7 +3,6 @@
 GitML helps you manage and move around between iterations during model building.
 
 
-
 ## How gitml can help you?
 
 We provide a git like command line tool for you to take a snapshot of your current state with all necessary information and dependent files.
@@ -124,4 +123,8 @@ model = gitml.load("<ITERATION_ID>")
 ## Happy Model Building :)
 
 
+## Development - For contributors
+
+1. Fork the repo.
+2. Make changes and install using `./tasks/clean_install.sh`.
 
